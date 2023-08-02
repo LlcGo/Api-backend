@@ -1,0 +1,22 @@
+{
+  "groups": [
+    {
+      "name": "client.lc",
+      "type": "com.lc.lcclient.LcClientConfig",
+      "sourceType": "com.lc.lcclient.LcClientConfig"
+    }
+  ],
+  "properties": [
+    {
+      "name": "client.lc.access-key",
+      "type": "java.lang.String",
+      "sourceType": "com.lc.lcclient.LcClientConfig"
+    },
+    {
+      "name": "client.lc.secret-key",
+      "type": "java.lang.String",
+      "sourceType": "com.lc.lcclient.LcClientConfig"
+    }
+  ],
+  "hints": []
+}
