@@ -11,8 +11,6 @@ import org.springframework.web.bind.annotation.RestControllerAdvice;
 @RestControllerAdvice
 public class InvokeCountAOP {
 
-    // 原创_项目 [鱼皮](https://github.com/liyupi)
-
 //    @Resource
 //    private UserInterfaceInfoService userInterfaceInfoService;
 
