@@ -13,9 +13,11 @@ import javax.servlet.http.HttpServletRequest;
 @RequestMapping("/name")
 public class NameController {
 
+
+
     @GetMapping("/get")
     public String getNameByGet(String name, HttpServletRequest request) {
-        System.out.println(request.getHeader("yupi"));
+        System.out.println(request.getHeader("lc"));
         return "GET 你的名字是" + name;
     }
 
@@ -48,20 +50,20 @@ public class NameController {
 //            throw new RuntimeException("无权限");
 //        }
         // todo 调用次数 + 1 invokeCount
-        String accessKey = request.getHeader("accessKey");
-        String once = request.getHeader("once");
-        String body = request.getHeader("body");
-        //发送的
-        String sign1 = request.getHeader("sign");
-
-        //加密后的
-        String sign = Sign.getSign(body, "12345");
-        if(!accessKey.equals("admin")){
-            throw new RuntimeException("无权限");
-        }
-        if(!sign.equals(sign1)){
-            throw new RuntimeException("无权限");
-        }
+//        String accessKey = request.getHeader("accessKey");
+//        String once = request.getHeader("once");
+//        String body = request.getHeader("body");
+//        //发送的
+//        String sign1 = request.getHeader("sign");
+//
+//        //加密后的
+//        String sign = Sign.getSign(body, "12345");
+//        if(!accessKey.equals("admin")){
+//            throw new RuntimeException("无权限");
+//        }
+//        if(!sign.equals(sign1)){
+//            throw new RuntimeException("无权限");
+//        }
 
         String result = "POST 用户名字是" + user.getUserName();
         return result;

@@ -20,6 +20,8 @@ import java.util.HashMap;
 
 public class LcClient {
 
+    public static final String GATE_WAY_IP = "http://localhost:8090";
+
     private String accessKey;
 
     private String secretKey;
@@ -32,7 +34,7 @@ public class LcClient {
     public String getNameByGet(String name) {
         HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("name", name);
-        String result = HttpUtil.get("http://localhost:8123/api/name/get/", paramMap);
+        String result = HttpUtil.get(GATE_WAY_IP + "/api/name/get/", paramMap);
         System.out.println(result);
         return result;
     }
@@ -41,7 +43,7 @@ public class LcClient {
     public String getNameByPost(String name) {
         HashMap<String, Object> paramMap = new HashMap<>();
         paramMap.put("name", name);
-        String result = HttpUtil.post("http://localhost:8123/api/name/post/", paramMap);
+        String result = HttpUtil.post(GATE_WAY_IP + "/api/name/post/", paramMap);
         System.out.println(result);
         return result;
     }
@@ -51,7 +53,7 @@ public class LcClient {
         stringStringHashMap.put("accessKey",accessKey);
 //        stringStringHashMap.put("secretKey",secretKey);
         stringStringHashMap.put("once", RandomUtil.randomNumbers(4));
-        stringStringHashMap.put("timeTemp",new Date().toString());
+        stringStringHashMap.put("timeTemp",String.valueOf(System.currentTimeMillis() / 1000));
         stringStringHashMap.put("body",body);
         stringStringHashMap.put("sign", Sign.getSign(body,secretKey));
         return stringStringHashMap;
@@ -59,7 +61,7 @@ public class LcClient {
 
     public String getUsernameByPost(User user) {
         String json = JSONUtil.toJsonStr(user);
-        String result2 = HttpRequest.post("http://localhost:8123/api/name/user/")
+        String result2 = HttpRequest.post(GATE_WAY_IP + "/api/name/user/")
                 .body(json)
                 .addHeaders(getHandlerMap(json))
                 .execute().body();
